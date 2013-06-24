@@ -1,6 +1,6 @@
 " File: powertab.vim
 " Author: panurg <panurg@bk.ru>
-" Version: 0.01
+" Version: 0.02
 " WebPage: http://github.com/panurg/powertab
 " License: BSD
 " Desription: modifies vim tabline to look like statusline with powerline
@@ -10,7 +10,7 @@
 if exists("g:loaded_powertab") || &cp
   finish
 endif
-let g:loaded_powertab=001 " your version number
+let g:loaded_powertab=002 " your version number
 let s:keepcpo=&cpo
 set cpo&vim
 
@@ -25,6 +25,8 @@ if exists("+tabline")
         hi! TabLineFill term=NONE guifg=#657b83 guibg=#fdf6e3 guisp=#657b83
         hi! TabLineSel term=NONE cterm=bold gui=bold guifg=#eee8d5 guibg=#268bd2 guisp=#657b83
         hi! TabLine cterm=NONE ctermfg=0 ctermbg=7 guifg=#eee8d5 guibg=#586e75 guisp=#657b83
+        hi! TabModSign guibg=#586e75 guifg=#ff8c00 gui=bold
+        hi! TabModSignSel guibg=#268bd2 guifg=#242424 gui=bold
     else
         if (g:colors_name == "zenburn")
             hi! TabLine cterm=NONE ctermfg=0 ctermbg=7 guifg=#9e9e9e guibg=#585858 guisp=#657b83 gui=NONE
@@ -35,6 +37,8 @@ if exists("+tabline")
             hi! TabArrow cterm=inverse guibg=#585858 guifg=#9e9e9e
             hi! TabArrowFillSel cterm=inverse guibg=#303030 guifg=#d0d0d0 guisp=#657b83
             hi! TabArrowFill cterm=inverse guibg=#303030 guifg=#585858 guisp=#657b83
+            hi! TabModSign guibg=#585858 guifg=#ff8c00 gui=bold
+            hi! TabModSignSel guibg=#d0d0d0 guifg=#242424 gui=bold
         endif
     endif
 

@@ -1,6 +1,6 @@
 " File: powertab.vim
 " Author: panurg <panurg@bk.ru>
-" Version: 0.01
+" Version: 0.02
 " WebPage: http://github.com/panurg/powertab
 " License: BSD
 
@@ -46,7 +46,18 @@ function! powertab#ArrowTabLine()
         if file == ''
             let file = '[No Name]'
         endif
-        let s .= ' ' . file . ' '
+        let s .= ' ' . file . ' ' . (len(buflist) > 1 ? len(buflist) : '')
+        let modified = 0
+        for j in buflist
+            if getbufvar(j, '&modified')
+                let modified = 1
+                let s .= (i == t ? '%#TabModSignSel#' : '%#TabModSign#') . '+'
+                break
+            endif
+        endfor
+        if len(buflist) > 1 || modified
+            let s .= ' '
+        endif
         if (g:tabbar == 'left-fancy')
             if (i == tabpagenr('$'))
                 let s .= (i != t ? '%#TabArrowFill#' : '%#TabArrowFillSel#')
